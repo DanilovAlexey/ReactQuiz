@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Button.module.css'
 
 const Button = props => {
-    console.log(props)
+    //console.log(props)
     const cls = [
         classes.Button,
         classes[props.type]
