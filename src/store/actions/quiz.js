@@ -116,23 +116,25 @@ export function quizAnswerClick(answerId) {
 
         const question = state.quiz[state.activeQuestion]
         const results = state.results
-
+        
+        //console.log(question);
+        
         if (question.rightAnswerId === answerId) {
             if (!results[question.id]) {
                 results[question.id] = 'success'
             }
-
+            
             dispatch(quizSetState({
-                [answerId]: 'success',
+                [answerId]: 'success'
+            },
                 results
-            }
             ))
-
+            
             const timeout = window.setTimeout(() => {
                 if (isQuizFinished(state)) {
                     dispatch(finishQuiz())
                 } else {
-                     dispatch(quizNextQuestion(state.activeQuestion + 1))
+                    dispatch(quizNextQuestion(state.activeQuestion + 1))
                 }
 
                 window.clearTimeout(timeout)
@@ -141,9 +143,10 @@ export function quizAnswerClick(answerId) {
             results[question.id] = 'error'
 
             dispatch(quizSetState({
-                [answerId]: 'error',
+                [answerId]: 'error'
+            },
                 results
-            }
+
             ))
         }
     }
